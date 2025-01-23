@@ -1,3 +1,4 @@
+! [BuildStatus] (https://github.com/vsanchez0/HW2-BFS/workflows/HW2-BFS/badge.svg?event=push)
 # Assignment 2
 Breadth-first search
 
@@ -30,6 +31,7 @@ In test/test_bfs.py:
 
 * Write unit tests (in the test_bfs.py file) for your breadth first search
 * Replace these instructions with a brief description of bfs in your forked repo
+Breadth-First Search (BFS) is an algorithm used to explore or traverse a graph level by level. Starting from a given node, it visits all its immediate neighbors before moving on to the neighbors of those neighbors, ensuring that nodes are visited in order of their distance (in terms of edges) from the start node.
 	
 * Automate Testing with a [Github Actions](https://docs.github.com/en/actions)
 

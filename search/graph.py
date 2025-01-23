@@ -1,4 +1,5 @@
 import networkx as nx
+import queue
 
 class Graph:
     """
@@ -21,8 +22,37 @@ class Graph:
         * If there is an end node input and a path does not exist, return None
 
         """
-        return
+        if nx.is_empty(self.graph):
+            raise ValueError(f'Graph is empty')
+        if start not in self.graph:
+            raise ValueError(f"Start node {start} is not in the graph.")
+        if end is not None and end not in self.graph:
+            raise ValueError(f"End node {end} is not in the graph.")
 
+        Q = queue.Queue()
+        visited = []
+        parent = {}
 
+        Q.put(start)
+        visited.append(start)
+        parent[start] = None
 
+        while not Q.empty():
+            v = Q.get()
 
+            if v == end:
+                path = []
+                while v is not None:
+                    path.append(v)
+                    v = parent[v]
+                return path[::-1]
+
+            for neighbor in self.graph.neighbors(v):
+                if neighbor not in visited:
+                    visited.append(neighbor)
+                    parent[neighbor] = v
+                    Q.put(neighbor)
+
+        if end is None:
+            return list(visited)
+        return None
